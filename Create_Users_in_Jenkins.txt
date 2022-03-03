@@ -1,0 +1,49 @@
+# **************************************************** Scenario: Create Users in Jenkins ***********************************************************
+
+The Nautilus team is planning to use Jenkins for some of their CI/CD pipelines. DevOps team has just installed a fresh Jenkins server and they are configuring it further to be available for use. It might only have sample jobs for now. A new developer has joined the Nautilus application development team and they want this user to be added to the Jenkins server as per requirements mentioned below:
+
+
+Click on the + button in the top left corner and select option Select port to view on Host 1, enter port 8081 and click on Display Port. You should be able to access the Jenkins login page. Login using username theadmin and Adm!n321 password.
+
+Create a jenkins user rose with dCV3szSGNA password and full name should be Rose (its case sensitive).
+
+Using Project-based Matrix Authorization Strategy assign overall read permission to rose user. Also there is one existing job, so make sure rose only has read permissions to the job (we are not worried about other permissions like Agent, SCM, etc.). You might need to install some plugins and restart Jenkins service. So, we recommend clicking on Restart Jenkins when installation is complete and no jobs are running on plugin installation/update page i.e update centre.
+
+Note:
+
+You might need to install some plugins and restart Jenkins service. So, we recommend clicking on Restart Jenkins when installation is complete and no jobs are running on plugin installation/update page i.e update centre. Also some times Jenkins UI gets stuck when Jenkins service restarts in the back end so in such case please make sure to refresh the UI page.
+
+If you restart Jenkins service it will go down for some time so please wait for Jenkins login page to come back before clicking on Finish.
+
+Note: For these kind of scenarios requiring changes to be done in a web UI, please take screenshots so that you can share it with us for review in case your task is marked incomplete. You may also consider using a screen recording software such as loom.com to record and share your work.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+Solution
+Step-1: Create User
+
+Select port to view on Host 1 and connect to port 8081. Login using the Jenkins admin user and password given in the question
+Click Jenkins > Manage Jenkins > Manage Users > Create User and provide values as per the question. Below is a sample:
+Username: rose
+Password: dCV3szSGNA
+Confirm Password: dCV3szSGNA
+Fullname: Rose
+
+Step-2: Assign Project-based Matrix Authorization Strategy
+Click Jenkins > Manage Jenkins > Configure Global Security and under Authorization section, check if you see the Project-based Matrix Authorization Strategy
+In case you don't see this option
+Click Jenkins > Manage Jenkins > Manage Plugins and click Available tab.
+Search for Matrix. You will see multiple matches. Select Matrix Authorization Strategy Plugin plugin and click Download now and install after restart
+Wait for sometime and refresh the browser
+Again under Authorization section, check if you now see the Project-based Matrix Authorization Strategy
+Click the checkbox Project-based Matrix Authorization Strategy. This will reveal additional matrix UI. Setup as per question:
+Click Add user or group... and add the newly created user mariyam
+Against user mariyam click the checkbox for Read under Overall
+Against user mariyam click the checkbox for Read under Job
+Press Save and then log out
+
+Step-3: Verification
+Login using the newly created user and password given in the question. You should be able to successfully login
+You should be able to see the minimal dashboard
+You should also be able to see the Job that was already present in the question
+Click the Job and you should not see any configure option but only read-only access to the job
+
