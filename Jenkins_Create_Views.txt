@@ -1,0 +1,49 @@
+# *********************************************** Scenario: Jenkins Create Views *****************************************************************
+
+The DevOps team of xFusionCorp Industries is planning to create a number of Jenkins jobs for different tasks. So to easily manage the jobs within Jenkins UI they decided to create different views for all Jenkins job based on usage/nature of these jobs, - for example nautilus-crons view for all cron jobs. Based on the requirements shared below please perform the below mentioned task:
+
+
+Click on the + button in the top left corner and select option Select port to view on Host 1, enter port 8081 and click on Display Port. You should be able to access the Jenkins login page. Login using username theadmin and Adm!n321 password.
+
+Create a Jenkins job which should be named nautilus-pipeline-job.
+
+Configure this job to run a simple bash command to echo hello world!!.
+
+Create a view named nautilus-crons (should be a List View) and make sure nautilus-pipeline-job and nautilus-cron-job (which is already present on Jenkins) jobs are listed under this new view.
+
+Schedule this newly create job to build periodically at every minute i.e '* * * * *' (please make sure to use the cron expression exactly same how it is mentioned here)
+
+Make sure the job builds successfully.
+
+Note:
+
+You might need to install some plugins and restart Jenkins service. So, we recommend clicking on Restart Jenkins when installation is complete and no jobs are running on plugin installation/update page i.e update centre. Also, Jenkins UI sometimes gets stuck when Jenkins service restarts in the back end. In this case please make sure to refresh the UI page.
+
+For these kind of scenarios requiring changes to be done in a web UI, please take screenshots so that you can share it with us for review in case your task is marked incomplete. You may also consider using a screen recording software such as loom.com to record and share your work.
+------------------------------------------------------------------------------------------------------------------------------------------
+Jenkins Create Views
+Introduction
+This task involves creating a simple job that runs every minute and then creating a Jenkins list view to include this and another job
+
+Solution
+Step 1: Create a Scheduled Job
+Select port to view on Host 1 and connect to port 8081. Login using the Jenkins admin user and password given in the question
+Click New item and in the following screen:
+Name: devops-pipeline-job (Keep 'Freestyle Project' as selected) and click Ok
+Under Build Triggers click Build periodically. This reveals a text area to input the Schedule. Give the schedule as per the question e.g. * * * * * (Ignore any warnings)
+In the Build section below, choose Add build step > Execute shell and input the command given in the question in the command:
+echo hello world!!
+Click Save
+Run Build Now to check the job runs correctly. Check Console Output to check the echo output.
+
+Step 2: Create a View
+Go to Jenkins > New View and add a List View as per question e.g. devops-crons
+Under Job Filters select both the jobs as per the question e.g. devops-cron-job and devops-pipeline-job
+Click Ok
+
+Verification:
+Click Jenkins > My Views. You should be able to see the view devops-crons.
+Click that and under that you should be able to see both the jobs listed
+Click the job that you created in Step 1
+You should see a few builds already as builds get triggered every minute automatically
+
